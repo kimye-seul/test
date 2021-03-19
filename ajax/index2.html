@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<style>
+    #app {width: 800px;margin:0 auto;}
+    h1 {font-size: 60px;text-align: center;margin-bottom: 60px;}
+    table{width: 100%;border: 3px solid #000;border-collapse: collapse;}
+    tr th {background: rgb(191, 149, 202);padding: 5px 0;border-right: 1px solid #000;width: calc(100% / 8);}
+    tr td {border-bottom: 1px solid #000;text-align: right;padding: 3px 2px;border-right: 1px solid #000;}
+    tr td:first-child,tr td:nth-child(2),tr td:nth-child(3){text-align: center;}
+</style>
+<body>
+    <div id="app">
+        <h1>대우학교 1반성적표</h1>
+        <table>
+            <tr>
+                <th>출석번호</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>국어</th>
+                <th>국사</th>
+                <th>수학</th>
+                <th>영어</th>
+                <th>화학</th>
+            </tr>
+            <tr v-for="(item,index) in table">
+                <td>{{item.num}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.gen}}</td>
+                <td>{{item.obj1}}</td>
+                <td>{{item.obj2}}</td>
+                <td>{{item.obj3}}</td>
+                <td>{{item.obj4}}</td>
+                <td>{{item.obj5}}</td>
+            </tr>
+        </table>
+        <p>
+            <button type="button" @click="pushData()">추가</button>
+            <button type="button" @click="popData()">삭제</button>
+        </p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                table:[
+                    {num:1,name:'이인포',gen:'남자',obj1:98,obj2:85,obj3:100,obj4:75,obj5:70},
+                    {num:2,name:'손포아',gen:'남자',obj1:100,obj2:98,obj3:60,obj4:55,obj5:50},
+                    {num:3,name:'김모포',gen:'남자',obj1:100,obj2:91,obj3:95,obj4:54,obj5:55},
+                    {num:4,name:'김아아',gen:'여자',obj1:95,obj2:94,obj3:94,obj4:89,obj5:56},
+                    {num:5,name:'인포모',gen:'여자',obj1:99,obj2:88,obj3:93,obj4:97,obj5:54},
+                    {num:6,name:'인초아',gen:'남자',obj1:96,obj2:84,obj3:95,obj4:95,obj5:53},
+                    {num:7,name:'모아인',gen:'여자',obj1:99,obj2:90,obj3:98,obj4:70,obj5:52},
+                    {num:8,name:'정포모',gen:'여자',obj1:989,obj2:93,obj3:97,obj4:88,obj5:78},
+                    {num:9,name:'이포모',gen:'남자',obj1:83,obj2:85,obj3:82,obj4:83,obj5:84}
+                ]
+            },
+            methods:{
+                pushData(){
+                    this.table.push({num:10,name:'추가추',gen:'남자',obj1:50,obj2:80,obj3:70,obj4:90,obj5:100})
+                },
+                popData(){
+                    this.table.pop();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
